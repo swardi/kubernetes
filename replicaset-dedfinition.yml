@@ -1,0 +1,22 @@
+kind: ReplicaSet
+apiVersion: extensions/v1beta1
+metadata:
+  name: myapp-replicataset
+  labels:
+    app: my-app
+    type: front-end
+
+spec:
+  template:
+    metadata:
+      name: testing-pods
+      labels:
+        app: my-frontend
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+  selector:
+    matchLabels:
+      app: my-frontend
+  replicas: 4
